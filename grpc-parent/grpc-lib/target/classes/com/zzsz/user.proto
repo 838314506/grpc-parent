@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package com.zzsz;
+import "google/api/annotations.proto";
+
+option java_package = "com.zzsz.demo";
+option java_outer_classname = "UserProto";
+option java_multiple_files = true;
+
+service User {
+    rpc getUser (UserRequest) returns (UserResponse) {
+        option (google.api.http) = {
+            get: "/get/{id}"
+        };
+
+    }
+}
+message UserRequest {
+    int32 id = 1;
+}
+
+message UserResponse {
+    int32 id = 1;
+    string name = 2;
+    int32 age = 3;
+}
